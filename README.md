@@ -19,6 +19,6 @@
 > Eslint,
 
 ## 其他說明
-  請見 [Wiki]()
+  請見 [Wiki](https://github.com/tingwei628/react-boilerplate/wiki)
 ## License ##
 MIT 
