@@ -1,7 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   devtool: 'eval',
   entry: [
@@ -11,6 +10,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
+    publicPath: '/static/'
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -18,27 +18,36 @@ module.exports = {
       inject: true,
       filename: 'index.html'
     }),
-    new ExtractTextPlugin('style.css', { allChunks: true }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     }),
     new webpack.NoErrorsPlugin()
  ],
+ // eslint: {
+ //  failError: true
+ // },
  module: {
-   loaders: [
+  // preLoaders: [{
+  //   test: /\.js?$/,
+  //   exclude: /node_modules/,
+  //   loaders: ['eslint']
+  // }],
+  loaders: [
      {
        test: /\.js$/,
        loaders: ['react-hot', 'babel'],
-       include: path.resolve(__dirname, 'src'),
+       include: path.join(__dirname, 'src'),
        exclude: '/node_modules/'
      }, {
       test: /\.css$/,
-      loader: ['style-loader!css-loader']
-     }
-   ]
- },
- resolve: {
-   extensions: ['', '.js', '.json'] 
- } 
+      loader: 'style!css'
+     }, {
+      test: /\.(jpg|png|svg|jpeg|gif)/,
+      loaders: ['url-loader?limit=10000'],
+    }
+  ]},
+  resolve: {
+    extensions: ['', '.js', '.json'] 
+  } 
 } 
