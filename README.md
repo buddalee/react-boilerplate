@@ -12,6 +12,7 @@
   ```
     $npm start // 啟動 localhost:3000
     
+    ctrl + C // 關掉 localhost:3000
   ```
 ## 套件內容
 > React.js, Redux, React-router, Immutable.js
