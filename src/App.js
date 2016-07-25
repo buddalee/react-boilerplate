@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import './style/style.css';
 import Watch from './components/Watch';
 import data from './data.json';
+import 'whatwg-fetch'; 
 export default class App extends Component {
   render() {
+    fetch('./todos.json').then((response) =>
+      response.json()
+    ).then(json => console.log(json));
     return (
       <div>
         <Watch />

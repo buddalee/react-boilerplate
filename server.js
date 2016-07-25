@@ -24,7 +24,18 @@ const middleware = webpackMiddleware(compiler, {
 });
 app.use(middleware);
 app.use(webpackHotMiddleware(compiler));
-
+// route設定 get ./todo.json
+app.get('/todos.json', function(req, res) {
+  res.send([{
+    "id": 0,
+    "title": "Item1"
+  },
+  {
+    "id": 1,
+    "title": "Item2"
+  }]);
+  res.end();
+})
 app.listen(port,'localhost', function(err) {
   if (err) {
     console.log(err);
