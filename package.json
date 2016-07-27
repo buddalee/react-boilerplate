@@ -42,6 +42,7 @@
     "whatwg-fetch": "^1.0.0"
   },
   "dependencies": {
+    "flux": "^2.1.1",
     "lodash": "^4.13.1",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
