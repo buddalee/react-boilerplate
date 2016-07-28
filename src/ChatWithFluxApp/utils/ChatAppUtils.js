@@ -3,6 +3,31 @@ import {
   RECEIVE_RAW_MESSAGES,
   RECEIVE_RAW_CREATED_MESSAGE,
 } from '../actions/ChatServerAction';
+import ThreadStore from '../stores/ThreadStore';
+
+export const CHANGE_EVENT = 'CHANGE_EVENT';
+
+export function markAllInThreadRead(threadID, messages) {
+  for (var id in messages) {
+    if (messages[id].threadID === threadID) {
+      messages[id].isRead = true;
+    }
+  }
+  return messages;
+}
+
+
+export function addMessages(rawMessages, messages) {
+  rawMessages.forEach(function(messageItem) {
+    if (!messages[messageItem.id]) {
+      messages[messageItem.id] = this.convertRawMessage(
+        messageItem,
+        ThreadStore.getCurrentID()
+      );
+    }
+  });
+  return messages;
+}
 
 export function convertRawMessage (rawMessage, currentThreadID) {
   return {
