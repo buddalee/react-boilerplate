@@ -1,5 +1,6 @@
 import ChatAppDispatcher from '../dispatcher/ChatAppDispatcher';
-import { EventEmitter } from 'event';
+// import { EventEmitter } from 'event';
+const { EventEmitter } = require('events');
 import { CLICK_THREAD } from '../actions/ChatThreadAction';
 import { RECEIVE_RAW_MESSAGES } from '../actions/ChatServerAction';
 import { 

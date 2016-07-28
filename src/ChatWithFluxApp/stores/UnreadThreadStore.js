@@ -1,5 +1,6 @@
 import ChatAppDispatcher from '../dispatcher/ChatAppDispatcher';
-import { EventEmitter } from 'event';
+// import { EventEmitter } from 'event';
+const { EventEmitter } = require('events');
 import MessageStore from './MessageStore';
 import ThreadStore from './ThreadStore';
 import { CHANGE_EVENT } from '../utils/ChatAppUtils';

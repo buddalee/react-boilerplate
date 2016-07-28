@@ -1,5 +1,6 @@
 import ChatAppDispatcher from '../dispatcher/ChatAppDispatcher';
-import { EventEmitter } from 'event';
+// import { EventEmitter } from 'event';
+const { EventEmitter } = require('events');
 import { 
   CHANGE_EVENT,
   convertRawMessage,
@@ -9,6 +10,7 @@ import {
 } from '../utils/ChatAppUtils';
 import { CREATE_MESSAGE } from '../actions/ChatMessageAction';
 import { CLICK_THREAD } from '../actions/ChatThreadAction';
+import { RECEIVE_RAW_MESSAGES } from '../actions/ChatServerAction';
 import ThreadStore from './ThreadStore';
 
 let messages = {};
@@ -31,7 +33,7 @@ const MessageStoreConfig = {
   },
   getAllForThread: function(threadID) {
     var threadMessages = [];
-    for (var id in _messages) {
+    for (var id in messages) {
       if (messages[id].threadID === threadID) {
         threadMessages.push(messages[id]);
       }
@@ -73,7 +75,7 @@ MessageStore.dispatchToken = ChatAppDispatcher.register(function(action) {
       MessageStore.emitChange();
       break;
 
-    case ActionTypes.RECEIVE_RAW_MESSAGES:
+    case RECEIVE_RAW_MESSAGES:
       messages = Object.assign({}, messages, addMessages(action.rawMessages, messages));
       ChatAppDispatcher.waitFor([ThreadStore.dispatchToken]);
       messages = Object.assign({}, messages, markAllInThreadRead(ThreadStore.getCurrentID(), messages));

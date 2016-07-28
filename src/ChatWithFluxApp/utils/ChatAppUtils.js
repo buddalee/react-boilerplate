@@ -5,6 +5,7 @@ import {
 } from '../actions/ChatServerAction';
 import ThreadStore from '../stores/ThreadStore';
 
+export const ENTER_KEY_CODE = 13;
 export const CHANGE_EVENT = 'CHANGE_EVENT';
 
 export function markAllInThreadRead(threadID, messages) {
@@ -20,7 +21,7 @@ export function markAllInThreadRead(threadID, messages) {
 export function addMessages(rawMessages, messages) {
   rawMessages.forEach(function(messageItem) {
     if (!messages[messageItem.id]) {
-      messages[messageItem.id] = this.convertRawMessage(
+      messages[messageItem.id] = convertRawMessage(
         messageItem,
         ThreadStore.getCurrentID()
       );
@@ -38,7 +39,7 @@ export function convertRawMessage (rawMessage, currentThreadID) {
     text: rawMessage.text,
     isRead: rawMessage.threadID === currentThreadID
   };
-},
+}
 
 export function getCreatedMessageData (text, currentThreadID) {
   const timestamp = Date.now();

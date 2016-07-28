@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-// import ThreadListItem from './ThreadListItem';
-import ThreadStore from '../store/ThreadStore';
-// import UnreadThreadStore from '../store/UnreadThreadStore';
+import ThreadListItem from './ThreadListItem';
+import ThreadStore from '../stores/ThreadStore';
+import UnreadThreadStore from '../stores/UnreadThreadStore';
 import ChatAppDispatcher from '../dispatcher/ChatAppDispatcher';
 
 export default class ThreadSection extends Component {
@@ -12,6 +12,7 @@ export default class ThreadSection extends Component {
 			currentThreadID: ThreadStore.getCurrentID(),
 			unreadCount: UnreadThreadStore.getCount(),
 		};
+		this.getStateFromStores = this.getStateFromStores.bind(this);
 	}
 	componentDidMount() {
 		// Store 綁定 更新事件
@@ -44,7 +45,7 @@ export default class ThreadSection extends Component {
       	<div className="thread-count">
           {unread}
         </div>
-        <ul classNam="thread-list">
+        <ul className="thread-list">
         	{threadListItems}
         </ul>
       </div>
