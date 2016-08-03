@@ -24,15 +24,14 @@ module.exports = {
     }),
     new webpack.NoErrorsPlugin()
  ],
- // eslint: {
- //  failError: true
- // },
  module: {
-  // preLoaders: [{
-  //   test: /\.js?$/,
-  //   exclude: /node_modules/,
-  //   loaders: ['eslint']
-  // }],
+  /* preLoaders: [
+    {
+       test: /\.js?$/,
+       exclude: /node_modules/,
+       loader: 'eslint-loader'
+    }
+  ], */
   loaders: [
      {
        test: /\.js$/,
@@ -51,6 +50,6 @@ module.exports = {
     }
   ]},
   resolve: {
-    extensions: ['', '.js', '.json'] 
-  } 
+    extensions: ['', '.js', '.json', '.jsx']
+  }
 } 
