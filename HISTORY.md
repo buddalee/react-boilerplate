@@ -12,3 +12,7 @@
 * According to this [tutorial](https://github.com/facebook/flux/tree/master/examples/flux-chat)
 
 * * *
+
+### add eslint config
+
+* * *
