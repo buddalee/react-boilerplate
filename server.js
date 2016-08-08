@@ -5,7 +5,12 @@ const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const historyApiFallback = require('connect-history-api-fallback');
 const config = require('./webpack.config.js');
-
+// ---- mongodb part ---- //
+const bodyParser = require('body-parser');
+const mongodb = require('mongodb');
+const ObjectID = mongodb.ObjectID;
+const CONTACTS_COLLECTION = 'contacts';
+// ---- end ------------- //
 const port = '3000';
 const app = express();
 app.use(historyApiFallback({
@@ -13,7 +18,8 @@ app.use(historyApiFallback({
   verbose: true,
   logger: console.log.bind(console)
 }));
-
+app.use(bodyParser.json());
+let db;
 const compiler = webpack(config);
 const middleware = webpackMiddleware(compiler, {
   publicPath: config.output.publicPath,
