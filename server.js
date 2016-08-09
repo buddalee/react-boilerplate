@@ -7,9 +7,9 @@ const historyApiFallback = require('connect-history-api-fallback');
 const config = require('./webpack.config.js');
 // ---- mongodb part ---- //
 const bodyParser = require('body-parser');
-const mongodb = require('mongodb');
-const ObjectID = mongodb.ObjectID;
-const CONTACTS_COLLECTION = 'contacts';
+// const mongodb = require('mongodb');
+// const ObjectID = mongodb.ObjectID;
+// const CONTACTS_COLLECTION = 'contacts';
 // ---- end ------------- //
 const port = '3000';
 const app = express();
@@ -19,7 +19,7 @@ app.use(historyApiFallback({
   logger: console.log.bind(console)
 }));
 app.use(bodyParser.json());
-let db;
+// let db;
 const compiler = webpack(config);
 const middleware = webpackMiddleware(compiler, {
   publicPath: config.output.publicPath,
