@@ -28,7 +28,6 @@ const middleware = webpackMiddleware(compiler, {
   noInfo: false,
   // lazy: false,
 });
-console.log(process.env.NODE_ENV);
 
 app.use(middleware);
 app.use(webpackHotMiddleware(compiler));
