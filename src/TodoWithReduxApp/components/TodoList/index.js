@@ -23,7 +23,7 @@ class TodoList extends Component {
     });
   }
   render() {
-    const { todos } = this.props; 
+    const { todos } = this.props.todoList; 
     return (<div>
       <input type="text" placeholder="請輸入你的Todo" onChange={this.saveTodo} />
       <button onClick={this.handlePost}>送出Todo</button>
@@ -39,12 +39,17 @@ TodoList.propTypes = {
   getTodos: PropTypes.func,
 };    
 TodoList.defaultProps = {
-  todos: [],
+  todoList: PropTypes.shape({
+    todos: PropTypes.array,
+    todo: PropTypes.object,
+    id: PropTypes.string,
+  }),
 };
 function mapStateToProps(state) {
-  const { todos } = state;
+  console.log(state);
+  const { todoList } = state;
   return {
-    todos,
+    todoList,
   };
 }
 export default connect(mapStateToProps, {
