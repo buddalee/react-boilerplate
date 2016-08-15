@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ThreadSection from './ChatWithFluxApp/components/ThreadSection';
-import MessageSection from './ChatWithFluxApp/components/MessageSection';
-import './ChatWithFluxApp/style/style.css';
+import ThreadSection from './components/ThreadSection';
+import MessageSection from './components/MessageSection';
+import './style/style.css';
 export default class ChatWithFluxApp extends Component {
   render() {
     return (

@@ -1,11 +1,12 @@
 import 'babel-polyfill';
+import 'whatwg-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 // import App from './App';
-import ChatWithFluxApp from './ChatWithFluxApp';
+// import ChatWithFluxApp from './ChatWithFluxApp/ChatWithFluxApp';
 import TodoWithReduxApp from './TodoWithReduxApp/TodoWithReduxApp';
-import store from './TodoWithReduxApp/stores/todos';
+import store from './stores/';
 // import { init } from './ChatWithFluxApp/ChatExampleData';
 // import { getAllMessages } from './ChatWithFluxApp/utils/ChatAppUtils';
 
