@@ -2,7 +2,7 @@ import { createStore, applyMiddleware  } from 'redux'
 import rootReducer from '../reducers/rootReducer';
 import thunk from 'redux-thunk';
 import { Iterable } from 'immutable';
-import api from '../middlewares/api';
+// import api from '../middlewares/api';
 import createLogger from 'redux-logger';
 
 const logger = createLogger({
@@ -18,9 +18,10 @@ const logger = createLogger({
 		return newState;
 	}
 });
+// add api here
 const store = createStore(
 	rootReducer,
-	applyMiddleware(thunk, api, logger),
+	applyMiddleware(thunk, logger),
 );
 
 export default store;

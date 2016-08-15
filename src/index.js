@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 // import ChatWithFluxApp from './ChatWithFluxApp/ChatWithFluxApp';
 import TodoWithReduxApp from './TodoWithReduxApp/TodoWithReduxApp';
 import store from './stores/';
+import 'react-select/dist/react-select.css';
 // import { init } from './ChatWithFluxApp/ChatExampleData';
 // import { getAllMessages } from './ChatWithFluxApp/utils/ChatAppUtils';
 
