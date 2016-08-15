@@ -73,6 +73,8 @@ TodoListForm.validate = (datas) => {
   const errors = {};
   if (!name) {
   	errors.name = 'Name is required';
+  } else if (name.trim().length > 5) {
+    errors.name = 'Name has at most 5 words';
   }
   if (!age) {
   	errors.age = 'Age is required';
