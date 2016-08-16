@@ -5,7 +5,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 // import App from './App';
 // import ChatWithFluxApp from './ChatWithFluxApp/ChatWithFluxApp';
-import TodoWithReduxApp from './TodoWithReduxApp/TodoWithReduxApp';
+// import TodoWithReduxApp from './TodoWithReduxApp/TodoWithReduxApp';
+import AuthJWTApp from './AuthJWTApp/AuthJWTApp';
 import store from './stores/';
 import 'react-select/dist/react-select.css';
 // import { init } from './ChatWithFluxApp/ChatExampleData';
@@ -16,5 +17,5 @@ import 'react-select/dist/react-select.css';
 
 ReactDOM.render(
 	<Provider store={store}>
-		<TodoWithReduxApp />
+		<AuthJWTApp />
 	</Provider>, document.getElementById('root'));

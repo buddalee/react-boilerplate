@@ -1,0 +1,6 @@
+.progress__meter {
+  height: 3px;
+  position: relative;
+  background-color: #6495ED;
+  margin: -8px;
+}
