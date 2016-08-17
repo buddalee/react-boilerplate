@@ -15,9 +15,9 @@ class TodoListForm extends Component {
 				age,
 				relationship,
 			},
-			handleSubmit, // ½ÓÙYÁÏÓÃ
+			handleSubmit, // æ¥è³‡æ–™ç”¨
 			options,
-			submitting, // reduxForm Ìá¹©
+			submitting, // reduxForm æä¾›
 		} = this.props;
 		return(<form onSubmit={handleSubmit}>
 			<div>
@@ -25,6 +25,7 @@ class TodoListForm extends Component {
 				<input 
 					type="text"
 					{...name}
+					onFocus={(val) => { console.log(val); name.onChange(val);}}
 					disabled={submitting}
 				/>
 				{name.error && name.touched && <label>{name.error}</label>}
@@ -48,7 +49,7 @@ class TodoListForm extends Component {
 		</form>);
 	}
 }
-// reduxForm ™ÚÎ»
+// reduxForm æ¬„ä½
 export const TodoListFormFields = [
   'name',
   'age',
@@ -66,8 +67,8 @@ TodoListForm.propTypes = {
   submitting: PropTypes.bool,
 };
 
-// ò×CÒ„t !
-// ¸ü‡ÀÖ”Ò»üc
+// é©—è­‰è¦å‰‡ !
+// æ›´åš´è¬¹ä¸€é»
 TodoListForm.validate = (datas) => {
   const { name, age, relationship } = datas;
   const errors = {};
@@ -87,8 +88,8 @@ TodoListForm.validate = (datas) => {
   return errors;
 };
 TodoListForm = reduxForm({
-	form: 'TodoListForm', // form reducer µÄÃû·Q
-  fields: TodoListFormFields, //™ÚÎ»
+	form: 'TodoListForm', // form reducer çš„åç¨±
+  fields: TodoListFormFields, //æ¬„ä½
   validate: TodoListForm.validate,
 })(TodoListForm);
 export default TodoListForm;

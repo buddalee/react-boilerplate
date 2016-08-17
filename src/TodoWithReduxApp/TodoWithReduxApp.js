@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import 'font-awesome/css/font-awesome.css';
 import Window from '../components/Window/';
-import TodoList from './components/TodoList/'
+import { Link } from 'react-router';
 export default class TodoWithReduxApp extends Component {
 	constructor() {
 		super();
@@ -33,13 +33,25 @@ export default class TodoWithReduxApp extends Component {
 		return null;
 	}
   render() {
-    return (
-      <div>
-        Todo List
+  	let container = null;
+  	if (this.props.children) {
+  		container = (<div>{this.props.children}</div>)
+  	} else {
+  		container = (<div>
+  			<div>我是母頁面!!!</div>
         <button onClick={this.handleOpenWin}>點我會出現視窗</button>
         {this.renderWin()}
-        <div><TodoList /></div>
+        <div><Link to="/todolist">請點我TodoList 子頁面</Link></div>
+  		</div>);
+  	}
+    return (
+      <div>
+      	{container}
       </div>
     );
   }
 }
+
+TodoWithReduxApp.propTypes = {
+	children: PropTypes.object,
+};

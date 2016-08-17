@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import TodoListItem from '../TodoListItem/';
 import Window from '../../../components/Window/';
 import { initialize } from 'redux-form';
@@ -87,6 +88,7 @@ class TodoList extends Component {
   }
   render() {
     const { todos } = this.props.todoList;
+    console.log('React-Router here!!! ', this.props);
     return (<div>
       {this.renderWin()}
       <input type="text" placeholder="請輸入你的Todo" onChange={this.saveTodo} />
@@ -94,6 +96,22 @@ class TodoList extends Component {
       <ul>
         {todos.map((todo) => <TodoListItem todo={todo} key={todo._id} />)}
       </ul>
+      <div>
+        <div>
+          <button
+            onClick={() => this.context.router.push('/')}
+          >回到母頁!!!</button>
+        </div>
+        <span>
+          <Link to='/todolist'>TodoList頁</Link>
+          <Link to='/todolist/page'>TodoList頁</Link>
+          <Link to='/todolist/intro'>TodoList頁</Link>
+        </span>
+      </div>
+      <div>以下子頁面</div>
+      <div>
+        {this.props.children}
+      </div>
     </div>);
   }
 }
@@ -104,7 +122,11 @@ TodoList.propTypes = {
   getOptions: PropTypes.func,
   initialize: PropTypes.func,
   options: PropTypes.array,
-};    
+  children: PropTypes.object,
+};
+TodoList.contextTypes = {
+  router: PropTypes.object,
+};
 TodoList.defaultProps = {
   todoList: PropTypes.shape({
     todos: PropTypes.array,
